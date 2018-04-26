@@ -129,8 +129,95 @@
         <li class="next">Lost (grid system)</li>
         <p class="note"><a href="https://www.postcss.parts">https://www.postcss.parts</a></p>
     </section>
+
+
     <section class="slide">
-        <img class="cover" src="pictures/image-10.png" width="" alt="PostCSS autoprefixer">
+        <img class="cover" src="pictures/image-12.png" width="" alt="Jest">
+    </section>
+    <section class="slide">
+        <h2>Jest</h2>
+        <li>Fast and sandboxed</li>
+        <li class="next">Built-in code coverage reports</li>
+        <li class="next">Powerful mocking library</li>
+        <li class="next">Works with TypeScript</li>
+        <li class="next">Snapshot Testing</li>
+        <p class="note"><a href="https://facebook.github.io">https://facebook.github.io</a></p>
+    </section>
+    <section class="slide">
+        <img class="cover" src="pictures/image-13.png" width="" alt="Jest + puppeteer">
+    </section>
+    <section class="slide fz-22">
+        <pre>
+            <code><span class="comment">&lt;!-- package.json --></span></code>
+            <code> </code>
+			<code>"jest": {</code>
+            <code>     <mark>"setupTestFrameworkScriptFile": "&lt;rootDir>/jest-setup.js"</mark></code>
+            <code>},</code>
+		</pre>
+
+        <style>
+            .fz-22 {
+                font-size: 22px;
+            }
+        </style>
+    </section>
+    <section class="slide fz-22">
+        <pre>
+            <code><span class="comment">&lt;!-- jest-setup.js --></span></code>
+            <code><span class="comment">&lt;!-- Copyright (c) 2018 American Company, Inc. --></span></code>
+            <code> </code>
+			<code>import { toMatchImageSnapshot } from 'jest-image-snapshot';</code>
+			<code>expect.<mark>extend({ toMatchImageSnapshot });</mark></code>
+		</pre>
+
+        <style>
+            .fz-22 {
+                font-size: 22px;
+            }
+        </style>
+    </section>
+    <section class="slide fz-22">
+        <pre>
+			<code>const puppeteer = require('puppeteer');</code>
+			<code class="mark">describe('Snapshot test main page', () => {</code>
+			<code>let browser;</code>
+			<code>    beforeAll(async () => {</code>
+			<code>        <mark>browser = await puppeteer.launch();</mark></code>
+			<code>    });</code>
+            <code>    ...</code>
+            <code>    afterAll(async () => {</code>
+			<code>        <mark>await browser.close();</mark></code>
+			<code>    });</code>
+			<code>});</code>
+		</pre>
+
+        <style>
+            .fz-22 {
+                font-size: 22px;
+            }
+        </style>
+    </section>
+    <section class="slide fz-22">
+        <pre>
+			<code>it('works', async () => {</code>
+			<code>    const page = await browser.newPage();</code>
+			<code>    await page.goto('http://localhost:8703/');</code>
+            <code>    const image = <mark>await page.screenshot({fullPage: true});</mark></code>
+            <code>    <mark>expect(image).toMatchImageSnapshot();</mark></code>
+			<code>});</code>
+		</pre>
+
+        <style>
+            .fz-22 {
+                font-size: 22px;
+            }
+        </style>
+    </section>
+    <section class="slide">
+        <img class="cover" src="pictures/image-14.png" width="" alt="Demo jest screenshot testing">
+    </section>
+    <section class="slide">
+        <img class="cover" src="pictures/image-15.png" width="" alt="Demo jest screenshot testing">
     </section>
 
 
